@@ -9,16 +9,16 @@ const useAuthCall = () => {
 
   const login = async (userInfo) => {
     try {
-      dispatchEvent(fetchStart());
+      dispatch(fetchStart());
       const { data } = await axios.post(
         `${BASE_URL}account/auth/login/`,
         userInfo
       );
-      dispatchEvent(loginSuccess());
-        
+      dispatch(loginSuccess());
+      return data;
     } catch (error) {
       console.log(error);
-      dispatchEvent(fetchFail());
+      dispatch(fetchFail());
     }
   };
   return { login };
