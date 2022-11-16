@@ -8,7 +8,8 @@ import image from "../assets/result.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
+import { TextField } from "@mui/material";
 
 const loginSchema = {};
 
@@ -56,10 +57,36 @@ const Login = () => {
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
+              //login
               actions.resetForm();
               actions.setSubmitting(false);
             }}
-          ></Formik>
+          >
+            {({
+              values,
+              isSubmitting,
+              handleChange,
+              touched,
+              handleBlur,
+              errors,
+            }) => (
+              <Form>
+                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                  <TextField
+                    label="Email"
+                    name="email"
+                    id="email"
+                    type="email"
+                    variant="outlined"
+                    value={values.email}
+                    onChange={handleChange}
+                    error={touched.email && Boolean(errors.email)}
+                    helperText={touched.email && errors.email}
+                  />
+                </Box>
+              </Form>
+            )}
+          </Formik>
 
           <Box sx={{ textAlign: "center", mt: 2 }}>
             <Link to="/register">Do you have not an account?</Link>
