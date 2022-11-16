@@ -13,6 +13,7 @@ import { TextField } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import * as yup from "yup";
 
+
 const loginSchema = yup.object().shape({
   email: yup
     .string()
@@ -73,7 +74,7 @@ const Login = () => {
             initialValues={{ email: "", password: "" }}
             validationSchema={loginSchema}
             onSubmit={(values, actions) => {
-              //login
+              login(values);
               actions.resetForm();
               actions.setSubmitting(false);
             }}
