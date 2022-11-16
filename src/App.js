@@ -1,6 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import AppRouter from "./router/AppRouter";
-import { grey, blueGrey } from "@mui/material/colors";
+import { grey, blueGrey, lightGreen } from "@mui/material/colors";
 import { Provider } from "react-redux";
 import store from "./app/store";
 import { ToastContainer } from "react-toastify";
@@ -9,7 +9,7 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: grey["900"],
+        main: lightGreen["500"],
       },
       secondary: {
         main: blueGrey["900"],

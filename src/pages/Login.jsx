@@ -10,12 +10,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Formik, Form } from "formik";
 import { TextField } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
 
 const loginSchema = {};
 
 const Login = () => {
   const navigate = useNavigate();
-  const { currentUser, error } = useSelector((state) => state?.auth);
+  const { currentUser, error, loading } = useSelector((state) => state?.auth);
 
   return (
     <Container maxWidth="lg">
@@ -83,6 +84,26 @@ const Login = () => {
                     error={touched.email && Boolean(errors.email)}
                     helperText={touched.email && errors.email}
                   />
+                  <TextField
+                    label="Password"
+                    name="password"
+                    id="password"
+                    type="password"
+                    variant="outlined"
+                    value={values.password}
+                    onChange={handleChange}
+                    error={touched.password && Boolean(errors.password)}
+                    helperText={touched.password && errors.password}
+                  />
+
+                  <LoadingButton
+                    type="submit"
+                    loading={loading}
+                    loadingPosition="center"
+                    variant="contained"
+                  >
+                    Submit
+                  </LoadingButton>
                 </Box>
               </Form>
             )}
