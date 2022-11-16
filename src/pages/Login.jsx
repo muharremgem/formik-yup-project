@@ -26,7 +26,7 @@ const loginSchema = yup.object().shape({
     .matches(/\d+/, "Password must have a number")
     .matches(/[a-z]+/, "Password must have a lowercase")
     .matches(/[A-Z]+/, "Password must have a uppercase")
-    .matches(/[!,?{}><%&$€#+-.]/),
+    .matches(/[!,?{}><%&$€#+-.]/, "Password must have a special"),
 });
 
 const Login = () => {
